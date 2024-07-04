@@ -17,3 +17,36 @@
   <script src="script.js"></script>
 </body>
 </html>
+#css code
+#quote-box {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+}
+#jsx code(code in reactjs)
+document.addEventListener('DOMContentLoaded', function() {
+  const quoteText = document.getElementById('text');
+  const quoteAuthor = document.getElementById('author');
+  const newQuoteBtn = document.getElementById('new-quote');
+  function fetchQuote() {
+    const quotes = [
+      {
+        text: "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+        author: "Nelson Mandela"
+      },
+      {
+        text: "The way to get started is to quit talking and begin doing.",
+        author: "Walt Disney"
+      },
+    ];
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    const randomQuote = quotes[randomIndex];
+    quoteText.textContent = randomQuote.text;
+    quoteAuthor.textContent = "- " + randomQuote.author;
+  }
+  newQuoteBtn.addEventListener('click', fetchQuote);
+  fetchQuote();
+});
