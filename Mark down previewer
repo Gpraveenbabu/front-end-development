@@ -1,0 +1,75 @@
+#html code
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Previewer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <textarea id="editor"></textarea>
+    <div id="preview"></div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/2.0.2/marked.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+#css code
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#editor, #preview {
+  width: 45%;
+  height: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+#editor {
+  resize: vertical;
+}
+
+#preview {
+  overflow-y: auto;
+}
+#jsx(reactjs code)
+document.addEventListener('DOMContentLoaded', function() {
+  const editor = document.getElementById('editor');
+  const preview = document.getElementById('preview');
+  const defaultMarkdown = `
+# Heading 1
+## Heading 2
+[Link](https://www.example.com)
+\`inline code\`
+
+\`\`\`
+// code block
+function greet() {
+  return "Hello!";
+}
+\`\`\`
+
+- List item 1
+- List item 2
+
+> Blockquote
+
+![Image](https://via.placeholder.com/150)
+
+**Bolded Text**
+`;
+  editor.value = defaultMarkdown;
+  updatePreview();
+  editor.addEventListener('input', updatePreview);
+  function updatePreview() {
+    const markdown = editor.value;
+    const html = marked(markdown, { breaks: true });
+    preview.innerHTML = html;
+  }
+});
+
